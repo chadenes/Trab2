@@ -10,7 +10,7 @@ Ordem 3 - Djalma B. de Souza Jr - 9019765 - Github user name: djalmasouza
 1- Ambiente de trabalho e compilador Linguagem utilizada: C Ambiente de desenvolvimento: 
 DevC++ Compilador: TDM-GCC MinGW 4.9.2 Release
 Parâmetros de Compilação: padrão do ambiente 
-Bibliotecas utilizadas: stdio.h ; stdlib.h ; string.h
+Bibliotecas utilizadas: stdio.h ; stdlib.h ; string.h ; math.h
 
 1.1- Compilação do código:
 
