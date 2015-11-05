@@ -102,8 +102,8 @@ void preordem(no *raiz){ //função que imprime os valores da árvore em "preordem"
 		return;
 	}
 	printf("%d ", raiz->chave);
-	ordem(raiz->esq);
-	ordem(raiz->dir);
+	preordem(raiz->esq);
+	preordem(raiz->dir);
 	return;
 }
 
@@ -112,8 +112,8 @@ void posordem(no *raiz){ //função que imprime os valores da árvore em "posordem"
 	if(raiz == NULL){
 		return;
 	}
-	ordem(raiz->esq);
-	ordem(raiz->dir);
+	posordem(raiz->esq);
+	posordem(raiz->dir);
 	printf("%d ", raiz->chave);
 	return;
 }
@@ -133,13 +133,70 @@ void lbracketing(no *raiz){ //essa função imprimirá a árvore no formato de co
 
 
 
+/*Todas as funções acima serão usadas no decorrer do programa, a função que vem agora
+é o menu, aonde o usuário poderá escolher o que deseja fazer com a árvore que entrou */
+
+
+
+
+void menu(no *raiz){
+	int j = 1;
+	int n, i;
+	printf("Agora que voce ja selecionou os elementos da arvore,\nselecione o que deseja fazer: ");
+	while(j!=0){
+		printf("\n\n1 : Imprime a arvore em ordem\n2 : Imprime a arvore em preordem\n3 : Imprime a arvore em posordem\n");
+		printf("4 : Imprime em Labelled Bracketing\n5 : Buscar um numero\n6 : Remover um numero\n7 : Inserir um numero\n");
+		printf("8 : Sair\n");
+		scanf("%d", &i);
+		switch(i){  //para cada número que o usuário entrar o programa realizará um comando diferente
+			case 1:
+				ordem(raiz);
+			break;
+			case 2:
+				preordem(raiz);
+			break;
+			case 3:
+				posordem(raiz);
+			break;
+			case 4:
+				lbracketing(raiz);
+			break;
+			case 5:
+				printf("\nEscreva o elemento que deseja buscar: ");
+				scanf("%d", &n);
+				busca(&raiz, n);
+			break;
+			case 6:
+				printf("\nEscreva o elemento que deseja remover, escreva um que esta na arvore! :");	
+				scanf("%d", &n);
+				remover(&raiz, n);
+			break;
+			case 7:
+				printf("Digite o elemento que deseja inserir, digite um que nao esteja na arvore! :");
+				scanf("%d", &n);
+				inserir(&raiz, n);
+			break;
+			case 8:
+				j=0;
+			break;	
+			default	:
+				printf("Insira um valor válido!\n");
+			break;		
+								
+		}
+	}
+	return;
+}
+
+
+
 
 
 
 void main(){
 	no *raiz = NULL;
 	int n, i, elemento;
-	printf("Ola, por favor insira quantidade de numeros com que voce ira trabalhar \n nesta arvore:");
+	printf("Ola, por favor insira quantidade de numeros com que voce ira trabalhar \nnesta arvore:");
 	scanf("%d", &n);  //recebo o número de elementos que o usuário deseja utilizar
 	printf("Agora insira os elementos:\n");
 	for(i=1;i<=n;i++){             //usando um laço de repetição eu recolho o valor de todos os elementos da árvore
@@ -147,16 +204,6 @@ void main(){
 		scanf("%d", &elemento);
 		inserir(&raiz, elemento);
 	}
-	printf("Escolha um elemento para verificar se ele esta na arvore: ");
-	scanf("%d", &elemento);
-	busca(&raiz, elemento);
-	printf("\nEssa eh a arvore impressa em ordem: ");
-	ordem(raiz);
-	printf("\n Preordem : ");
-	preordem(raiz);
-	printf("\n Posordem : ");
-	posordem(raiz);
-	printf("\n Lbracket : ");
-	lbracketing(raiz);
+	menu(raiz);
 	return ;
 }
