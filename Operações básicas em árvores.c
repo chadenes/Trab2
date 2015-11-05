@@ -86,6 +86,17 @@ void remover (no **raiz, int elemento){     //função eu remove o valor desejado
 
 
 
+void ordem(no *raiz){
+	if(raiz == NULL){
+		return;
+	}
+	ordem(raiz->esq);
+	printf("%d ", raiz->chave);
+	ordem(raiz->dir);
+	return;
+}
+
+
 void main(){
 	no *raiz = NULL;
 	int n, i, elemento;
@@ -100,9 +111,13 @@ void main(){
 	printf("Escolha um elemento para verificar se ele esta na arvore: ");
 	scanf("%d", &elemento);
 	busca(&raiz, elemento);
+	printf("\nEssa eh a arvore impressa em ordem: ");
+	ordem(raiz);
 	printf("\nAgora escolha um elemento para remover da arvore: ");
 	scanf("%d", &elemento);
 	remover(&raiz, elemento);
 	busca(&raiz, elemento);
+	printf("\n Essa eh a arvore em ordem final: ");
+	ordem(raiz);
 	return ;
 }
