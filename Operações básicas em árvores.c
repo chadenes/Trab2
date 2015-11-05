@@ -86,7 +86,7 @@ void remover (no **raiz, int elemento){     //função eu remove o valor desejado
 
 
 
-void ordem(no *raiz){
+void ordem(no *raiz){ //função que imprime os valores da árvore em ordem
 	if(raiz == NULL){
 		return;
 	}
@@ -95,6 +95,45 @@ void ordem(no *raiz){
 	ordem(raiz->dir);
 	return;
 }
+
+
+void preordem(no *raiz){ //função que imprime os valores da árvore em "preordem"
+	if(raiz == NULL){
+		return;
+	}
+	printf("%d ", raiz->chave);
+	ordem(raiz->esq);
+	ordem(raiz->dir);
+	return;
+}
+
+
+void posordem(no *raiz){ //função que imprime os valores da árvore em "posordem"
+	if(raiz == NULL){
+		return;
+	}
+	ordem(raiz->esq);
+	ordem(raiz->dir);
+	printf("%d ", raiz->chave);
+	return;
+}
+
+
+void lbracketing(no *raiz){ //essa função imprimirá a árvore no formato de co
+	printf("[");
+	if(raiz!=NULL){
+		printf("%d", raiz->chave);
+		lbracketing(raiz->esq);
+		lbracketing(raiz->dir);
+	}
+	printf("]");
+	return;
+}
+
+
+
+
+
 
 
 void main(){
@@ -113,11 +152,11 @@ void main(){
 	busca(&raiz, elemento);
 	printf("\nEssa eh a arvore impressa em ordem: ");
 	ordem(raiz);
-	printf("\nAgora escolha um elemento para remover da arvore: ");
-	scanf("%d", &elemento);
-	remover(&raiz, elemento);
-	busca(&raiz, elemento);
-	printf("\n Essa eh a arvore em ordem final: ");
-	ordem(raiz);
+	printf("\n Preordem : ");
+	preordem(raiz);
+	printf("\n Posordem : ");
+	posordem(raiz);
+	printf("\n Lbracket : ");
+	lbracketing(raiz);
 	return ;
 }
