@@ -24,3 +24,6 @@ como um executável e não precisa mais carregar o código.
 O uso dos programas encontra-se detalhado no Pdf dessa mesma pasta.
 
 
+3- Entradas :
+
+No pdf encontram-se exemplos de entradas para todos os programas
